@@ -1,0 +1,130 @@
+{{ 'styles.css' | asset_url | stylesheet_tag }}
+{{ 'script.js' | asset_url | script_tag }}
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="logo">DonutMotion</h1>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="about">
+  <div class="hero-content">
+    <h1>Welcome to Our Team</h1>
+    <p>
+      DonutMotion is a responsive team showcase built using pure CSS donut
+      visualizations and Shopify Liquid, highlighting skills, experience,
+      and clean UI across devices.
+    </p>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section" id="team">
+  <div class="container">
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="team-grid">
+      {% for block in section.blocks %}
+        <div
+          class="team-member tab"
+          {% if forloop.first %}
+            data-hover-donut="true"
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="donut-container">
+            <div class="donut">
+              <div class="donut-inner"></div>
+              <div class="donut-segment segment-1"></div>
+              <div class="donut-segment segment-2"></div>
+              <div class="donut-segment segment-3"></div>
+              <div class="donut-segment segment-4"></div>
+            </div>
+          </div>
+
+          <h3 class="tab-title">{{ block.settings.name }}</h3>
+          <p class="role">{{ block.settings.role }}</p>
+
+          <div class="tab-content">
+            {{ block.settings.description }}
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+
+  <section class="cta">
+    <h2>Join Our Team!</h2>
+    <p>We’re always looking for talented professionals.</p>
+    <a href="#contact" class="btn">Contact Us</a>
+  </section>
+
+  <div class="footer-content">
+    <div class="footer-info">
+      <p>Address: 1234 Innovation Street, Mumbai, Maharashtra, India</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Email: info@donutMotion.com</p>
+    </div>
+
+    <div class="social-links">
+      <span class="social-link">LinkedIn</span>
+      <span class="social-link">GitHub</span>
+      <span class="social-link">Twitter</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Team Portfolio",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Our Team Members"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Portfolio Section"
+    }
+  ]
+}
+{% endschema %}
