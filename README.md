@@ -1,4 +1,4 @@
-# the-Work-assignment
+donutmotion UI
 Project Summary
  implementation of the responsive webpage assignment featuring:
  **CSS-Only Donut Shapes** - No SVGs, pure CSS using `conic-gradient()`
