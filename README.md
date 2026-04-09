@@ -8,4 +8,5 @@ Project Summary
 **Production-Ready Code** - Optimized, well-commented, and easy to understand
 **Bonus: Shopify Liquid Template** - Ready for Shopify theme implementation
 
+ demo link: https://jovial-sopapillas-ac6471.netlify.app/
 
